@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block main %}
+
+<!-- Hero Section -->
+<main class="flex flex-col lg:flex-row items-center px-8 py-16 space-y-10 lg:space-y-0 lg:space-x-16">
+  <div class="flex-shrink-0">
+    <img src="https://img.freepik.com/free-vector/hand-drawn-nft-style-ape-illustration_23-2149622021.jpg"
+      alt=" Avatar Illustration" class="w-64 h-64 rounded-full border-4 border-[#00FF00]"
+      loading="lazy" />
+  </div>
+
+  <div class="flex flex-col text-left max-w-xl">
+    <span
+      class="border border-[#00FF00] text-[#00FF00] px-3 py-0.5 text-xs mb-4 rounded-full self-start text-center w-max">FULL-STACK
+      DEVELOPER</span>
+    <h1 class="font-bold">
+      <span class="neon-text text-5xl block">HAKEEM O.</span>
+      <span class="text-white text-4xl block mt-1">OKENIYI</span>
+    </h1>
+
+    <div class="flex flex-wrap space-x-2 mt-4">
+      <span
+        class="border border-[#00FF00] text-[#00FF00] px-3 py-1 rounded-full text-xs flex items-center mb-2">Frontend</span>
+      <span
+        class="border border-blue-500 text-blue-500 px-3 py-1 rounded-full text-xs flex items-center mb-2">Backend</span>
+      
+    </div>
+
+    <p class="mt-6 text-sm leading-relaxed">
+      Full-stack web developer specializing in building modern, scalable,
+      and secure web applications.<br />
+      Expertise in both front-end and back-end development using
+      cutting-edge technologies.
+    </p>
+
+    <div class="flex flex-wrap space-x-4 mt-8">
+      <a href="{% url "projects" %}"
+        class="flex items-center bg-[#00FF00] text-black px-6 py-2 rounded hover:bg-green-400 transition">View
+        Projects
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <a href="{% url "about" %}"
+        class="border border-[#00FF00] text-[#00FF00] px-6 py-2 rounded hover:bg-[#00FF00] hover:text-black transition">About
+        Me</a>
+    </div>
+  </div>
+</main>
+
+<!-- Projects Section -->
+<section id="projects" class="bg-black py-16 px-6 md:px-16">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl font-bold text-[#00FF00]">My Projects</h2>
+    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
+      Here are some of the projects I've worked on recently. Click on any to
+      explore more.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+    <!-- Card Template -->
+    {% for project in projects %}
+    <div
+    class="bg-[#0f0f0f] border {{ project.get_border_color }}  rounded-xl overflow-hidden shadow-md transition duration-300 {{ project.get_shadow_class }}">
+    <img src="{{project.image.url}}" alt="{{project.title}}" class="w-full h-48 object-cover" />
+    <div class="p-5 space-y-3">
+      <span class="inline-block bg-[#00FF00]/10 text-[#00FF00] text-sm font-medium px-3 py-1 rounded-full">
+       <p class="{{ project.icon|safe }}"></p> 
+      </span>
+      <h3 class="text-lg font-bold text-{{ project.get_tag_color }}">{{ project.title }}
+      </h3>
+      <p class="text-gray-400 text-sm">
+        {{ project.description| truncatewords:20 }}
+      </p>
+      <div class="flex items-center gap-4 pt-2  {{ project.get_tag_color }} text-xl">
+        <a href="{% url 'project_detail' project.slug %}" class="hover:text-white"><i class="fas fa-file-alt"></i></a>
+        <a href="{% url 'project_detail' project.slug %}" class="hover:text-white"><i class="fas fa-eye"></i></a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+    
+
+    
+  </div>
+</section>
+
+
+
+
+
+
+{% endblock main %}
+  

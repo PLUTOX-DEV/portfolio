@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - HAKEEM O. OKENIYI</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/10229/10229150.png" type="image/x-icon" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      @keyframes progressAnimation {
+        from {
+          width: 0%;
+        }
+      }
+      .progress-bar {
+        animation: progressAnimation 5s ease-in-out forwards;
+      }
+    </style>
+  </head>
+
+  <body class="bg-black text-white font-mono">
+    <!-- Navbar -->
+<nav class="sticky top-0 z-50 bg-black bg-opacity-60 backdrop-blur-md shadow-md flex flex-wrap items-center justify-between px-6 py-4">
+  <!-- Logo -->
+  <div class="flex items-center space-x-2">
+    <i class="fas fa-shield-alt text-green-500"></i>
+    <span class="text-green-500 font-semibold text-lg tracking-widest">PLUTOX.DEV</span>
+  </div>
+
+  <!-- Navigation Links -->
+  <ul class="flex flex-wrap space-x-6 text-gray-400 uppercase text-sm tracking-wider mt-4 lg:mt-0">
+    <li><a href="{% url 'home' %}" class="hover:text-[#00FF00] transition">Home</a></li>
+    <li><a href="{% url 'projects' %}" class="hover:text-[#00FF00] transition">Projects</a></li>
+    <li><a href="{% url 'about' %}" class="hover:text-[#00FF00] transition">About</a></li>
+    <li><a href="{% url 'contact' %}" class="text-[#00FF00] font-semibold">Contact</a></li>
+  </ul>
+
+  <!-- Login Button -->
+  <a href="{% url 'admin:index' %}" class="flex itesm-center bg-[#00FF00] text-black px-4 py-2 rounded hover:bg-green-400 transition mt-4 lg:mt-0">
+    <i class="fas fa-lock mr-2"></i> Login
+  </a>
+</nav>
+
+    <section class="py-20 px-6 bg-black">
+      <div class="max-w-5xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-[#00FF00] mb-3">About Me</h1>
+        <h2 class="text-gray-400 text-xl mb-10">
+          Full-Stack Developer | Problem Solver | Tech Enthusiast
+        </h2>
+
+        <!-- Profile Image and Intro -->
+        <div
+          class="flex flex-col md:flex-row items-center md:items-start justify-center mb-12 gap-10"
+        >
+          <!-- Profile Image -->
+          <div
+            class="w-40 h-40 rounded-full overflow-hidden border-4 border-[#00FF00] shadow-lg shrink-0"
+          >
+            <img
+            src="https://img.freepik.com/free-vector/hand-drawn-nft-style-ape-illustration_23-2149622021.jpg"
+            alt="
+              PLUTO .X"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- About Text -->
+          <div class="text-gray-300 text-lg max-w-xl md:text-left text-center">
+            <p class="mb-2">
+              Hey 👋, I'm
+              <span class="text-[#00FF00] font-semibold">Hakeem O. Okeniyi</span>
+              — a passionate Full-Stack Developer focused on building modern,
+              user-centered web applications with clean code and intuitive
+              design.
+            </p>
+            <p>
+              I enjoy solving real-world problems with code, contributing to
+              open-source projects, and constantly learning new technologies. 🚀
+            </p>
+            <a
+              href="contact.html"
+              class="inline-block mt-6 px-6 py-2 border border-[#00FF00] text-[#00FF00] rounded hover:bg-[#00FF00] hover:text-black transition"
+            >
+              Let's Work Together
+            </a>
+          </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
+          <!-- Frontend Skills -->
+          <div>
+            <h2 class="text-2xl font-bold text-[#00FF00] mb-4">Frontend Skills</h2>
+            {% for skill in frontend_skills %}
+            <div class="mb-4">
+              <div class="flex items-center gap-2 mb-1">
+                <i class="{{ skill.icon }} text-[#00FF00] text-xl"></i>
+                <span>{{ skill.name }}</span>
+              </div>
+              <div class="w-full bg-gray-800 h-3 rounded">
+                <div class="bg-[#00FF00] h-3 rounded progress-bar" style="width: {{ skill.proficiency }}%"></div>
+              </div>
+            </div>
+            
+            {% endfor %}
+          </div>
+          
+          <!-- Backend Skills -->
+          <div>
+            <h2 class="text-2xl font-bold text-[#00FF00] mb-4">Backend Skills</h2>
+            {% for skill in backend_skills %}
+            <div class="mb-4">
+              <div class="flex items-center gap-2 mb-1">
+                <i class="{{ skill.icon }} text-[#00FF00] text-xl"></i>
+                <span>{{ skill.name }}</span>
+              </div>
+              <div class="w-full bg-gray-800 h-3 rounded">
+                <div class="bg-[#00FF00] h-3 rounded progress-bar" style="width: {{ skill.proficiency }}%"></div>
+              </div>
+            </div>
+            
+            {% endfor %}
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 px-6 text-center">
+      <p class="text-gray-400 text-sm">
+        &copy; 2025 Hakeem O. Okeniyi. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

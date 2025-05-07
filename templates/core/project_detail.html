@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block main %}
+
+<!-- Project Detail -->
+<section class="px-6 py-20 max-w-5xl mx-auto">
+  <div class="mb-12">
+    <h1 class="text-4xl md:text-5xl font-bold text-[#00FF00] mb-4">{{ project.title }}</h1>
+    <p class="text-gray-400 text-lg mb-6">{{ project.description }}</p>
+    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="rounded-lg shadow-lg mb-10 w-full max-h-[500px] object-cover" />
+  </div>
+
+  <!-- Features -->
+  <div class="space-y-6 text-gray-300 leading-relaxed">
+    <h2 class="text-2xl text-[#00FF00] font-bold">Features</h2>
+    <ul class="list-disc pl-6">
+      {% for feature in project.features.all %}
+        <li>{{ feature.text }}</li>
+      {% empty %}
+        <li>No features listed yet.</li>
+      {% endfor %}
+    </ul>
+
+    <!-- Tech Stack -->
+    <h2 class="text-2xl text-[#00FF00] font-bold pt-6">Tech Stack</h2>
+    <p>
+      {% if project.tech_stack %}
+        {% for tech in project.tech_stack %}
+          {{ tech }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+      {% else %}
+        <span class="text-gray-500">No technologies listed.</span>
+      {% endif %}
+    </p>
+<!-- Project Links -->
+<div class="pt-6">
+  <h2 class="text-2xl text-[#00FF00] font-bold">Project Links</h2>
+  <div class="flex space-x-6 mt-4">
+
+    {% if project.demo_link %}
+      <a href="{{ project.demo_link }}" target="_blank"
+         class="flex items-center bg-[#00FF00] text-black px-4 py-2 rounded hover:bg-green-400 transition">
+        <i class="fas fa-play mr-2"></i> Live Demo
+      </a>
+    {% else %}
+      <span class="inline-flex items-center bg-gray-600 text-white px-4 py-2 rounded opacity-50 cursor-not-allowed">
+        <i class="fas fa-play mr-2"></i> Demo Not Available
+      </span>
+    {% endif %}
+
+    {% if project.github_link %}
+      <a href="{{ project.github_link }}" target="_blank"
+         class="flex items-center bg-gray-800 border border-[#00FF00] text-[#00FF00] px-4 py-2 rounded hover:bg-gray-700 transition">
+        <i class="fab fa-github mr-2"></i> GitHub
+      </a>
+    {% else %}
+      <span class="inline-flex items-center bg-gray-600 text-white px-4 py-2 rounded opacity-50 cursor-not-allowed">
+        <i class="fab fa-github mr-2"></i> GitHub Not Available
+      </span>
+    {% endif %}
+
+  </div>
+</div>
+
+
+
+    <!-- Back to Projects -->
+    <a href="{% url 'projects' %}" class="inline-block mt-10 text-[#00FF00] hover:underline">&larr; Back to all projects</a>
+  </div>
+</section>
+
+{% endblock main %}
