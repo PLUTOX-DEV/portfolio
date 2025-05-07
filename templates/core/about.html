@@ -41,10 +41,7 @@
     <li><a href="{% url 'contact' %}" class="text-[#00FF00] font-semibold">Contact</a></li>
   </ul>
 
-  <!-- Login Button -->
-  <a href="{% url 'admin:index' %}" class="flex itesm-center bg-[#00FF00] text-black px-4 py-2 rounded hover:bg-green-400 transition mt-4 lg:mt-0">
-    <i class="fas fa-lock mr-2"></i> Login
-  </a>
+  
 </nav>
 
     <section class="py-20 px-6 bg-black">
@@ -84,7 +81,7 @@
               open-source projects, and constantly learning new technologies. 🚀
             </p>
             <a
-              href="contact.html"
+              href="{% url "contact" %}"
               class="inline-block mt-6 px-6 py-2 border border-[#00FF00] text-[#00FF00] rounded hover:bg-[#00FF00] hover:text-black transition"
             >
               Let's Work Together
