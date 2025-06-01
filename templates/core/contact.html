@@ -1,6 +1,5 @@
 {% load static %}
 {% load form_tags %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,35 +23,35 @@
 <body class="bg-[#0d0d0d] text-white font-mono">
 
   <!-- ✅ Navbar -->
-  <nav class="sticky top-0 z-50 bg-black/70 backdrop-blur-md shadow-md flex items-center justify-between px-6 py-4">
+  <nav class="sticky top-0 z-50 bg-black/70 backdrop-blur-md shadow-md flex flex-wrap items-center justify-between px-4 sm:px-6 py-4">
     <div class="flex items-center gap-2">
       <i class="fas fa-shield-alt text-green-500"></i>
-      <a href="{% url "home" %}" class="text-green-500 font-semibold text-xl tracking-widest">OKENIYI.DEV</a>
+      <a href="{% url 'home' %}" class="text-green-500 font-semibold text-xl tracking-widest">OKENIYI.DEV</a>
     </div>
-    <ul class="flex gap-6 text-sm uppercase tracking-wider text-gray-400">
+    <ul class="flex flex-wrap gap-4 sm:gap-6 text-sm uppercase tracking-wider text-gray-400 mt-4 sm:mt-0">
       <li><a href="{% url 'home' %}" class="hover:text-[#00FF00] transition">Home</a></li>
       <li><a href="{% url 'projects' %}" class="hover:text-[#00FF00] transition">Projects</a></li>
       <li><a href="{% url 'about' %}" class="hover:text-[#00FF00] transition">About</a></li>
       <li><a href="{% url 'contact' %}" class="text-[#00FF00]">Contact</a></li>
     </ul>
-  
   </nav>
 
   <!-- ✅ Header -->
-  <section class="px-6 py-12 text-center">
-    <h2 class="text-4xl font-bold neon animate-pulse">// Contact</h2>
+  <section class="px-4 sm:px-6 py-10 text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold neon animate-pulse">// Contact</h2>
     <p class="text-gray-400 mt-2 text-sm">Secure communication channel established</p>
   </section>
 
   <!-- ✅ Main Section -->
-  <section class="px-6 md:px-16 pb-20 grid grid-cols-1 md:grid-cols-3 gap-10">
+  <section class="px-4 sm:px-6 md:px-16 pb-20 grid grid-cols-1 md:grid-cols-3 gap-10">
     <!-- 📬 Form -->
-    <div class="col-span-2 bg-[#0d0d20] border border-[#00FF00]/30 p-6 rounded-xl shadow-md">
+    <div class="col-span-1 md:col-span-2 bg-[#0d0d20] border border-[#00FF00]/30 p-6 rounded-xl shadow-md">
       <h3 class="text-white font-bold text-xl mb-6">Initialize Connection</h3>
       <form method="POST" class="space-y-5">
         {% csrf_token %}
         {{ form.non_field_errors }}
 
+        <!-- Name -->
         <div>
           <label for="id_name" class="block text-sm mb-1">Identifier</label>
           {{ form.name|add_class:"w-full bg-black border border-[#00FF00]/30 px-4 py-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00FF00]" }}
@@ -61,6 +60,7 @@
           {% endfor %}
         </div>
 
+        <!-- Email -->
         <div>
           <label for="id_email" class="block text-sm mb-1">Communication Channel</label>
           {{ form.email|add_class:"w-full bg-black border border-[#00FF00]/30 px-4 py-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00FF00]" }}
@@ -69,6 +69,7 @@
           {% endfor %}
         </div>
 
+        <!-- Subject -->
         <div>
           <label for="id_subject" class="block text-sm mb-1">Subject Line</label>
           {{ form.subject|add_class:"w-full bg-black border border-[#00FF00]/30 px-4 py-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00FF00]" }}
@@ -77,6 +78,7 @@
           {% endfor %}
         </div>
 
+        <!-- Message -->
         <div>
           <label for="id_message" class="block text-sm mb-1">Data Payload</label>
           {{ form.message|add_class:"w-full bg-black border border-[#00FF00]/30 px-4 py-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00FF00]" }}
@@ -109,12 +111,12 @@
   </section>
 
   <!-- ✅ Footer -->
-  <footer class="bg-black py-8 px-6 text-center border-t border-green-900">
+  <footer class="bg-black py-8 px-4 sm:px-6 text-center border-t border-green-900">
     <p class="text-sm text-gray-500">
       <i class="fas fa-shield-alt text-[#00FF00] mr-1"></i>
       &copy; 2025 | <span class="text-[#00FF00] font-semibold">OKENIYI HAKEEM</span>
     </p>
-    <div class="mt-2 space-x-4 text-sm text-gray-500">
+    <div class="mt-2 space-x-4 text-sm text-gray-500 flex flex-wrap justify-center">
       <a href="https://github.com/PLUTOX-DEV" class="hover:underline" target="_blank">GITHUB</a>
       <a href="https://linkedin.com/in/okeniyihakeem" class="hover:underline" target="_blank">LINKEDIN</a>
     </div>
